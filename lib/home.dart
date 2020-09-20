@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 // import 'package:camera/camera.dart';
+import 'main.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -27,29 +28,34 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
         backgroundColor: Color.fromRGBO(7, 94, 84, 1),
         title: Padding(
           padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-          child: Container(
-              margin: EdgeInsets.fromLTRB(0, 0, 170, 0),
-              child: Center(
-                  child: Text(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Container(
+                  child: Center(
+                      child: Text(
                 'WhatsApp',
                 style: TextStyle(
                     fontSize: 23,
                     color: Colors.white,
                     fontWeight: FontWeight.normal),
               ))),
+            ],
+          ),
         ),
         actions: [
           Padding(
             padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
             child: Center(
-                child: Opacity(
-                    opacity: 1,
-                    child: IconButton(
-                      icon: Icon(
-                        Icons.search,
-                        color: Colors.white,
-                      ),
-                    ))),
+                child: IconButton(
+              splashRadius: 20,
+              splashColor: Colors.white30,
+              onPressed: () {},
+              icon: Icon(
+                Icons.search,
+                color: Colors.white,
+              ),
+            )),
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
@@ -57,6 +63,8 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                 child: Opacity(
                     opacity: 1,
                     child: IconButton(
+                      onPressed: () {},
+                      splashRadius: 20,
                       icon: Icon(
                         Icons.more_vert,
                         color: Colors.white,
@@ -66,14 +74,14 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
         ], //actions
         bottom: TabBar(
           isScrollable: true,
-          unselectedLabelColor: Colors.white,
+          unselectedLabelColor: Colors.white60,
           indicatorColor: Colors.white,
           labelColor: Colors.white,
           controller: _tabController,
           tabs: [
             Center(
               child: Container(
-                width: 15,
+                width: MediaQuery.of(context).size.width / 25,
                 child: Tab(
                   icon: Icon(
                     Icons.camera_alt,
@@ -82,9 +90,24 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                 ),
               ),
             ),
-            Container(width: 90, child: Tab(text: 'CHATS')),
-            Container(width: 90, child: Tab(text: 'STATUS')),
-            Container(width: 90, child: Tab(text: 'CALLS')),
+            Container(
+                width: MediaQuery.of(context).size.width / 5,
+                child: Tab(
+                    child: Text(
+                  'CHATS',
+                ))),
+            Container(
+                width: MediaQuery.of(context).size.width / 5,
+                child: Tab(
+                    child: Text(
+                  'STATUS',
+                ))),
+            Container(
+                width: MediaQuery.of(context).size.width / 5,
+                child: Tab(
+                    child: Text(
+                  'CALLS',
+                ))),
           ],
         ),
       ),
